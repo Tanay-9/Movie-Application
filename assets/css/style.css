@@ -1,0 +1,415 @@
+/*-----------------------------------*\
+  #style.css
+\*-----------------------------------*/
+
+
+:root{
+  --background: hsla(220, 17%, 7%, 1);
+--banner-background: hsla(250, 6%, 20%, 1);
+--white-alpha-20: hsla(0, 0%, 100%, 0.2);
+--on-background: hsla(220, 100%, 95%, 1);
+--on-surface: hsla(250, 100%, 95%, 1);
+--on-surface-variant: hsla(250, 1%, 44%, 1);
+--primary: hsla(349, 100%, 43%, 1);
+--primary-variant: hsla(349, 69%, 51%, 1);
+--rating-color: hsla(44, 100%, 49%, 1);
+--surface: hsla(250, 13%, 11%, 1);
+--text-color: hsla(250, 2%, 59%, 1);
+--white: hsla(0, 0%, 100%, 1);
+
+
+--banner-overlay: 90deg, hsl(220, 17%, 7%) 0%, hsla(220, 17%, 7%, 0.5) 100%;
+--bottom-overlay: 180deg, hsla(250, 13%, 11%, 0), hsla(250, 13%, 11%, 1);
+
+
+/* font family */
+--ff-dm-sans: 'DM Sans', sans-serif;
+
+/* font sizes */
+--fs-heading: 4rem;
+--fs-title-lg: 2.6rem;
+--fs-title: 2rem;
+--fs-body: 1.8rem;
+--fs-button: 1.5rem;
+--fs-label: 1.4rem;
+
+/* weight */
+--weight-bold: 700;
+
+/* shadows */
+--shadow-1: 0 1px 4px hsla(0, 0%, 0%, 0.75);
+--shadow-2: 0 2px 4px hsla(350, 100%, 43%, 0.3);
+
+/* border radius */
+--radius-4: 4px;
+--radius-8: 8px;
+--radius-16: 16px;
+--radius-24: 24px;
+--radius-36: 36px;
+
+
+--transition-short: 250ms ease;
+--transition-long: 500ms ease;
+}
+
+
+
+
+
+
+/*-----------------------------------*\
+  #RESET
+\*-----------------------------------*/
+
+
+/* Box sizing rules */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* Remove default margin */
+body,
+h1,
+h2,
+h3,
+h4,
+p,
+figure,
+blockquote,
+dl,
+dd {
+  margin: 0;
+}
+
+a,img,span,iframe,button{
+  display: block;
+}
+/* Remove list styles on ul, ol elements with a list role, which suggests default styling will be removed */
+ul,ol {
+  list-style: none;
+}
+
+/* Set core root defaults */
+html:focus-within {
+  scroll-behavior: smooth;
+}
+
+/* Set core body defaults */
+body {
+  /* min-height: 100vh; */
+  text-rendering: optimizeSpeed;
+  line-height: 1.5;
+  background-color: var(--background);
+  color: var(--on-background);
+  font-size: var(--fs-body);
+}
+
+
+/* A elements that don't have a class get default styles */
+a{
+  text-decoration: none;
+  color: inherit;
+}
+
+/* Make images easier to work with */
+img,
+picture {
+  /* max-width: 100%; */
+  height: auto;
+}
+
+/* Inherit fonts for inputs and buttons */
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+
+input,button{
+  background:none;
+  border: none;
+  color: inherit;
+}
+
+button{
+  text-align: left;
+  cursor: pointer;
+}
+
+/* Remove all animations, transitions and smooth scroll for people that prefer not to see them */
+@media (prefers-reduced-motion: reduce) {
+  html:focus-within {
+   scroll-behavior: auto;
+  }
+  
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+html{
+  font-family: var(--ff-dm-sans);
+  font-size: 10px;
+  scroll-behavior: smooth;
+}
+:focus-visible{
+  outline-color: var(--primary-variant);
+}
+
+::-webkit-scrollbar{
+  width: 7px;
+  height: 7px;
+}
+::-webkit-scrollbar-thumb{
+  background-color: var(--banner-background);
+  border-radius: var(--radius-8);
+}
+/*-----------------------------------*\
+  #REUSED STYLE
+\*-----------------------------------*/
+
+.search-wrap::before{
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  border: 3px solid var(--white);
+  border-radius:var(--radius-24);
+  border-right-color: transparent;
+  top: 14px;
+  right: 10px;
+  content: "";
+  animation: loading 400ms linear infinite;
+  display: none;
+}
+
+@keyframes loading{
+  0% {
+    transform: rotate(0);
+  }
+  100% {
+    transform: rotate(1turn);
+  }
+}
+.search-wrap.searching::before{
+  display: block;
+}
+
+.name{
+  font-size: var(--fs-title);
+  font-weight: var(--weight-bold);
+  letter-spacing: 0.5px;
+}
+
+
+
+/*-----------------------------------*\
+  #HEADER
+\*-----------------------------------*/
+
+
+.header{
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-block: 24px;
+  padding-inline: 16px;
+  gap: 6px;
+}
+.header .logo-link{
+  margin-inline-end:auto;
+}
+.search-btn{
+  padding: 12px;
+  background-color: var(--banner-background);
+  border-radius: var(--radius-8);
+  opacity: 0.4;
+  transition: var(--transition-short);
+}
+.menu-btn{
+  padding: 12px;
+}
+
+.search-btn:is(:hover,:focus-visible){
+  opacity: 1;
+}
+.menu-btn.active .menu,
+.menu-btn .close {
+  display: none;
+}
+
+.menu-btn .menu,
+.menu-btn.active .close {
+  display: block;
+}
+
+.search-box{
+  position: absolute;
+  top: 0;
+  left: 0;
+  width:100%;
+  height:100%;
+  background-color: var(--background);
+  padding: 24px 16px;
+  display: none;
+  align-items: center;
+  justify-content: center;
+ gap: 8px;
+ z-index: 1;
+}
+.search-box.active{
+  display: flex;
+}
+.search-wrap{
+  position: relative;
+  flex-grow: 1;
+}
+
+.input-box{
+  background-color: var(--banner-background);
+  height: 48px;
+  width: 100%;
+  line-height: 48px;
+  padding-inline:44px 16px;
+  outline: none;
+  border-radius: var(--radius-4);
+  /* display: block; */
+}
+.input-box::placeholder{
+  color: var(--on-surface-variant);
+}
+.input-box:hover{
+  box-shadow: 0 0 0 3px var(--on-surface);
+}
+.input-box:focus-within{
+  padding: 14px 28px;
+  transition:var(--transition-long);
+}
+.search-wrap .search-icon{
+ position: absolute;
+ top: 50%;
+ transform: translateY(-50%);
+ left: 12px;
+ opacity: 0.4;
+ transition: var(--transition-short);
+}
+.search-wrap:focus-within .search-icon{
+  opacity: 0;
+}
+
+
+
+/*-----------------------------------*\
+  #SIDEBAR sidebar=link is stored as categories
+\*-----------------------------------*/
+
+.sidebar{
+  position: absolute;
+  background-color: var(--background);
+  top: 96px;
+  bottom: 0;
+  left: 0;
+  /* left: -340px; */
+  max-width: 340px;
+  width: 100%;
+  overflow-y: overlay;
+  border-block-start:1px solid var(--banner-background);
+  z-index: 4;
+  transition: var(--transition-long);
+  visibility: hidden;
+}
+.sidebar-list{
+  display: grid;
+  gap: 6px;
+}
+
+.sidebar.active{
+  visibility: visible;
+}
+.sidebar-grid{
+  display: grid;
+  gap: 20px;
+  padding-top:35px;
+}
+.sidebar::-webkit-scrollbar-thumb{background-color: transparent;}
+.sidebar:is(:hover, :focus-within)::-webkit-scrollbar-thumb{background-color: var(--banner-background);}
+
+.sidebar-list,.sidebar-footer{
+  padding-inline: 30px;
+}
+.categories{
+  color: var(--on-surface-variant);
+  transition: var(--transition-short);
+}
+.sidebar-list .name{
+  margin-block-end: 10px;
+}
+.categories:hover{
+ /* color: var(--background); */
+ opacity: 1;
+}
+.overlay{
+position:fixed;
+bottom: 0;top: 96px;
+left: 0;
+width: 100%;
+background: var(--white);
+opacity: 0;
+pointer-events: none;
+transition: var(--transition-short);
+z-index: 3;
+}
+.overlay.active{
+  opacity: 0.5;
+  pointer-events: all;
+}
+/*-----------------------------------*\
+  #HOME PAGE
+\*-----------------------------------*/
+.cover-image{
+  max-width: 100%;
+  height: 100%;
+}
+
+
+
+/*-----------------%------------------*\
+  #DETAIL PAGE
+\*-----------------------------------*/
+
+
+
+
+
+/*-----------------------------------*\
+  #MOVIE LIST PAGE
+\*-----------------------------------*/
+
+
+
+
+
+/*-----------------------------------*\
+  #SEARCH MODAL
+\*-----------------------------------*/
+
+
+
+
+
+/*-----------------------------------*\
+  #MEDIA QUERIES
+\*-----------------------------------*/
+
+
+
