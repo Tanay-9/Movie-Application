@@ -85,7 +85,7 @@ dd {
   margin: 0;
 }
 
-a,img,span,iframe,button{
+a,iframe,button{
   display: block;
 }
 /* Remove list styles on ul, ol elements with a list role, which suggests default styling will be removed */
@@ -225,6 +225,7 @@ html{
   padding-block: 24px;
   padding-inline: 16px;
   gap: 6px;
+  /* z-index: -3; */
 }
 .header .logo-link{
   margin-inline-end:auto;
@@ -408,7 +409,7 @@ z-index: 3;
   transform: var(--transition-short);
 }
 .container{
-  display: relative;
+  position: relative;
   background-color: var(--surface);
   color: var(--on-surface);
   padding: 24px 20px 48px;
@@ -511,7 +512,7 @@ z-index: 3;
   bottom: 20px;
   left: 20px;
   right: 0;
-  border-radius: var(--radius-16) 0 0 var(--radius-16);
+  border-radius: var(--radius-16) ;
   user-select: none;
   padding: 4px 0 4px 4px;
   overflow-x: auto;
@@ -551,6 +552,54 @@ z-index: 3;
   border-radius: var(--radius-16);
   overflow: hidden;
 }
+
+.upcoming-movies{
+  padding-top: 32px;
+}
+.title-wrap{
+  margin-block-end:24px;
+}
+.slider-list{
+  margin-inline : -20px;
+  overflow-x: overlay;
+  padding-block-end: 16px;
+  margin-block-end : -16px;}
+
+  .slider-list::-webkit-scrollbar-thumb{
+    background-color: transparent;
+  }
+  .slider-list::-webkit-scrollbar-button{
+    width: 20px;
+  }
+  .slider-list .slider-inner{
+    display: flex;
+    gap: 16px;
+    overflow-x: auto;
+    /* margin-inline: 4px; */
+  }
+/* .movie-banner{
+  margin-inline: 4px;
+} */
+  .slider-list .slider-inner::after, ::before{
+    content: "";
+    min-width: 4px;
+  }
+  .movie-banner{
+    position: relative;
+    min-width: 200px;
+  }
+  .movie-banner .card-banner{
+    width: 200px;
+  }
+  .movie-banner .title{
+    width: 100%;
+    overflow: hidden;
+    margin-block: 8px 4px;
+    white-space: nowrap;
+  }
+  .movie-banner .other-info-list{
+    justify-content: space-between;
+  }
 /*-----------
 
 ------%------------------*\
