@@ -377,13 +377,183 @@ z-index: 3;
   #HOME PAGE
 \*-----------------------------------*/
 .cover-image{
-  max-width: 100%;
+  width: 100%;
   height: 100%;
+  object-fit: cover;
+}
+.heading{
+  color: var(--white);
+  font-size: var(--fs-heading);
+  font-weight: var(--weight-bold);
+  letter-spacing: 0.5px;
+  line-height: 1.2;
+}
+.name-large{
+  font-size: var(--fs-title-lg);
+  letter-spacing: 0.5;
+}
+.other-item{
+  display: flex;
+  flex-direction: column;
+}
+.btn{
+  display: flex;
+  color: var(--white);
+  max-width: max-content;
+  gap: 10px;
+  font-size: var(--fs-button);
+  padding-block: 15px;
+  padding-inline:18px 16px;
+  border-radius: var(--radius-8);
+  transform: var(--transition-short);
+}
+.container{
+  display: relative;
+  background-color: var(--surface);
+  color: var(--on-surface);
+  padding: 24px 20px 48px;
+  height: calc(100vh - 96px);
+  overflow-y: overlay;
+  z-index: 1;
+}
+.container::after{
+  content: "";
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 150px;
+  background-image: linear-gradient(var(--bottom-overlay));
+  z-index: 1;
+  pointer-events: none;
 }
 
+.banner{
+  position: relative;
+  height: 700px;
+  border-radius: var(--radius-24);
+  overflow: hidden;
+}
+.slider .slider-item{
+  position: absolute;
+  top: 0;
+  left: 120%;
+  height: 100%;
+  width: 100%;
+  background-color: var(--banner-background);
+  transition: opacity var(--transition-long);
+  opacity: 0;
+  visibility: hidden;
+}
 
+.slider .slider-item::before{
+  content:"";
+  position: absolute;
+  inset: 0;
+  background-image:linear-gradient(var(--banner-overlay));
+}
+.slider .active{
+  left: 0;
+  opacity: 1;
+  visibility: visible;
+}
+.item-content{
+  position: absolute;
+  left: 24px;
+  right: 24px;
+  bottom: 286px;
+  z-index: 1;
+  color: var(--text-color);
+}
+.banner :is(.heading,.about-banner){
+ 
+  display: -webkit-box;
+  -webkit-box-orient : vertical;
+  overflow: hidden;
+}
 
-/*-----------------%------------------*\
+.banner .heading{
+  -webkit-line-clamp: 3;
+  margin-block-end : 16px;
+}
+
+.other-info-list{
+  display: flex; 
+  flex-wrap: wrap; 
+  gap: 14px;
+  justify-content: flex-start;
+  align-items: center;
+}
+ .banner .Genre{
+  margin-block:20px;
+}
+
+ .about-banner{
+  -webkit-line-clamp : 2;
+  margin-block-end : 24px;
+}
+.banner .btn {
+  background-color: var(--primary);
+}
+.banner .btn:is(:hover, :focus-within){
+  box-shadow:  0 2px 4px hsla(350, 100%, 43%, 0.3);
+}
+.rating{
+  background-color: var(--banner-background);
+  color: var(--white);
+  font-size: var(--fs-label);
+  font-weight: var(--weight-bold);
+  padding-inline: 6px;
+  border-radius: var(--radius-4);
+}
+.slider-controller{
+  position: absolute;
+  bottom: 20px;
+  left: 20px;
+  right: 0;
+  border-radius: var(--radius-16) 0 0 var(--radius-16);
+  user-select: none;
+  padding: 4px 0 4px 4px;
+  overflow-x: auto;
+}
+
+.slider-controller::-webkit-scrollbar{
+  /* display: none; */
+}
+.control--inner{
+  display: flex;
+  gap: 12px;
+}
+
+.control--inner::after{
+  content: "";
+  min-width: 12px;
+}
+
+.slider-controller .poster-box{
+  width: 100px;
+  border-radius: var(--radius-8);
+  flex-shrink: 0;
+  filter: brightness(0.4);
+}
+
+.slider-controller .active{
+  filter: brightness(1);
+  box-shadow: var(--shadow-1);
+}
+.poster-box,.video-card{
+  background-repeat: no-repeat;
+  background-size: 50px;
+  background-image: url(/assets/images/poster-bg-icon.png);
+  aspect-ratio: 2/3;
+  background-position: center;
+  background-color: var(--banner-background);
+  border-radius: var(--radius-16);
+  overflow: hidden;
+}
+/*-----------
+
+------%------------------*\
   #DETAIL PAGE
 \*-----------------------------------*/
 
@@ -413,3 +583,9 @@ z-index: 3;
 
 
 
+
+
+
+
+
+/* reused */
