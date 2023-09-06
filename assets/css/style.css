@@ -388,6 +388,7 @@ z-index: 3;
   font-weight: var(--weight-bold);
   letter-spacing: 0.5px;
   line-height: 1.2;
+  margin-block-end: 20px;
 }
 .name-large{
   font-size: var(--fs-title-lg);
@@ -580,7 +581,7 @@ z-index: 3;
 /* .movie-banner{
   margin-inline: 4px;
 } */
-  .slider-list .slider-inner::after, ::before{
+  .slider-list .slider-inner::after, .slider-inner::before{
     content: "";
     min-width: 4px;
   }
