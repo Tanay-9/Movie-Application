@@ -326,7 +326,7 @@ html{
   overflow-y: overlay;
   border-block-start:1px solid var(--banner-background);
   z-index: 4;
-  transition: var(--transition-long);
+  transition: var(--transition-short);
   visibility: hidden;
 }
 .sidebar-list{
@@ -342,7 +342,7 @@ html{
   gap: 20px;
   padding-top:35px;
 }
-.sidebar::-webkit-scrollbar-thumb{background-color: transparent;}
+.sidebar::-webkit-scrollbar-thumb{display: transparent;}
 .sidebar:is(:hover, :focus-within)::-webkit-scrollbar-thumb{background-color: var(--banner-background);}
 
 .sidebar-list,.sidebar-footer{
@@ -371,7 +371,7 @@ transition: var(--transition-short);
 z-index: 3;
 }
 .overlay.active{
-  opacity: 0.5;
+  opacity: 0.1;
   pointer-events: all;
 }
 /*-----------------------------------*\
@@ -493,6 +493,7 @@ z-index: 3;
  .about-banner{
   -webkit-line-clamp : 2;
   margin-block-end : 24px;
+  max-width: 40ch;
 }
 .banner .btn {
   background-color: var(--primary);
@@ -520,7 +521,7 @@ z-index: 3;
 }
 
 .slider-controller::-webkit-scrollbar{
-  /* display: none; */
+  display: transparent;
 }
 .control--inner{
   display: flex;
