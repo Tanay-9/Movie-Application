@@ -61,7 +61,7 @@ const generateGenre = function(){
         appendChild(link);
     }
 
- const navbar = document.querySelector('.sidebar')
+ const navbar = document.querySelector('.navbar')
  navbar.appendChild(sidebarGrid);
 //  sideBar.classList.add('active')
  toggleSidebar(navbar)
@@ -69,16 +69,18 @@ const generateGenre = function(){
 
 //togglesidebar basically added interactivity to use the sidebar, in this it made sure that the sidebar just does not stay on screen always rather can be seen in just a single click and also can be removed.
 const toggleSidebar = function(navbar){
-    const sidebarBtn = document.querySelector('.menu-btn');const sideBarToggle = document.querySelectorAll('.menu-toggle')
+    const sidebarBtn = document.querySelector('.menu-btn');
+    const sideBarToggle = document.querySelectorAll('.menu-toggle')
     // console.log(sideBarToggle);
     const sidebarClose = document.querySelectorAll('[menu-close]');
     const overlay = document.querySelector('.overlay');
-
+    
     sideBarToggle.forEach(ele=>{
         ele.addEventListener('click',function(){
             navbar.classList.toggle('active');
             sidebarBtn.classList.toggle('active');
             overlay.classList.toggle('active');
+            console.log(`working`);
         })
     })
 
@@ -88,6 +90,7 @@ const toggleSidebar = function(navbar){
             navbar.classList.remove('active');
             sidebarBtn.classList.remove('active');
             overlay.classList.remove('active');
+            console.log(`not`);
         })
     })
 }

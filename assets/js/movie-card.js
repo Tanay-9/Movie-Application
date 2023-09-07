@@ -1,6 +1,6 @@
 'use strict';
 
-import { baseURL } from "./index.js";
+import { baseURL } from "./app.js";
 
 
 export function createMovieCard(movie){
@@ -16,7 +16,7 @@ export function createMovieCard(movie){
     card.classList.add('movie-banner');
 
     card.innerHTML = `    
-    <a href="./detail.html" class="card-btn">
+    <a href="./detail.html" class="card-btn" onclick="getMovieDetails(${id})">
     <figure class="poster-box card-banner">
     <img src="${baseURL}w300${poster_path}" class="cover-image"loading='lazy'>
 </figure>

@@ -1,5 +1,6 @@
 'use strict'
  const api_key='api_key=5135c5361bde725c9aceedac065e40e1'
+  const baseURL="https://image.tmdb.org/t/p/";
 
 
  const fetchData = function(url,callback,optionalParam){
@@ -15,4 +16,4 @@
 //    console.log(genres);
 //   });
   
-  export {fetchData,api_key};
+  export {fetchData,api_key,baseURL};

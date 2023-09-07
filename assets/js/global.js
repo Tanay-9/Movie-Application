@@ -9,3 +9,6 @@ toggleButton.forEach(ele => {
     })
 })
 
+const getMovieDetails = function(movieId){
+    window.localStorage.setItem('movieId',String(movieId))
+}

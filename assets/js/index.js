@@ -1,38 +1,41 @@
 // import { fetchData } from "./app.js"
-
-export const baseURL="https://image.tmdb.org/t/p/";
+'use strict'
 
 import { sideBar } from "./sidebar.js";
-import { fetchData,api_key } from './app.js';
-import {createMovieCard} from './movie-card.js';
-
-const contentContainer = document.querySelector('.container');
+import { fetchData, api_key, baseURL} from './app.js';
+import { createMovieCard } from './movie-card.js';
 
 
+const pageContent = document.querySelector("[page-content]");
 
-sideBar();
+console.log(pageContent);
 
 
-const homePageSections = [
-    {
-        title : "Upcoming movies",
-        api_path : "https://api.themoviedb.org/3/movie/upcoming"
-    },
-    {
-        title: "Top rated movies",
-        api_path : "https://api.themoviedb.org/3/movie/top_rated"
-    },
-    {
-        title: "Trending",
-        api_path : "https://api.themoviedb.org/3/trending/movie/week"
-    }, 
-];
 
-const heroBannerCreate = function({ results:movieList }){
-    // const banner = document.querySelector('.banner')
-    const banner = document.createElement('section');
-    banner.classList.add('banner');
-    banner.innerHTML = `
+    sideBar();
+    fetchData(`https://api.themoviedb.org/3/movie/popular?`, heroBannerCreate);
+
+
+    const homePageSections = [
+        {
+            title: "Upcoming movies",
+            api_path: "https://api.themoviedb.org/3/movie/upcoming"
+        },
+        {
+            title: "Top rated movies",
+            api_path: "https://api.themoviedb.org/3/movie/top_rated"
+        },
+        {
+            title: "Trending",
+            api_path: "https://api.themoviedb.org/3/trending/movie/week"
+        },
+    ];
+
+    function heroBannerCreate({ results: movieList }) {
+        // const banner = document.querySelector('.banner')
+        const banner = document.createElement('section');
+        banner.classList.add('banner');
+        banner.innerHTML = `
     <div class="slider"></div>
 
 <div class="slider-controller">
@@ -41,27 +44,27 @@ const heroBannerCreate = function({ results:movieList }){
     </div>
 </div>
     `;
-// console.log(movieList);
-    let controlItem = 0 //to sync the changes on the bigger banner and its preview
-    for(const [ind,movie_details] of movieList.entries()){
-        const {
-            backdrop_path,
-            original_title,
-            overview,
-            release_date,
-            genre_ids,
-            id,
-            vote_count,
-            vote_average,
-            poster_path
-        } = movie_details;
-        const sliderItem = document.createElement('div');
-        sliderItem.classList.add('slider-item');
-        sliderItem.setAttribute('slider-item','')
-        // console.log(original_title);
+        // console.log(movieList);
+        let controlItem = 0 //to sync the changes on the bigger banner and its preview
+        for (const [ind, movie_details] of movieList.entries()) {
+            const {
+                backdrop_path,
+                original_title,
+                overview,
+                release_date,
+                genre_ids,
+                id,
+                vote_count,
+                vote_average,
+                poster_path
+            } = movie_details;
+            const sliderItem = document.createElement('div');
+            sliderItem.classList.add('slider-item');
+            sliderItem.setAttribute('slider-item', '')
+            // console.log(original_title);
 
-        sliderItem.innerHTML =  `
-        <img src="${baseURL}w500${backdrop_path}" alt=${original_title} class="cover-image" loading=${ind === 0? 'eager':'lazy'}>
+            sliderItem.innerHTML = `
+        <img src="${baseURL}w500${backdrop_path}" alt=${original_title} class="cover-image" loading=${ind === 0 ? 'eager' : 'lazy'}>
         <div class="item-content">
             <h2 class="heading">${original_title}</h2>
             <div class="other-info-list">
@@ -69,72 +72,73 @@ const heroBannerCreate = function({ results:movieList }){
                 <div class="other-item rating">${vote_average.toFixed(1)}</div></div>
                 <p class="Genre">${genre_ids}</p>
                 <p class="about-banner">${overview}</p>
-                <a href="./detail.html" class="btn">
+                <a href="./detail.html" class="btn" onclick="getMovieDetails(${id})">
                         <img src="./assets/images/play_circle.png" class="play-icon" width="24" height="24">
                         <span class="span">Watch Now</span>
                 </a>
             
         </div>
         `;
-        banner.querySelector('.slider').appendChild(sliderItem);
-        // console.log(banner.innerHTML);
+            banner.querySelector('.slider').appendChild(sliderItem);
+            // console.log(banner.innerHTML);
 
-        const controlButton = document.createElement('button');
-        controlButton.classList.add('poster-box','slider-item');
-        controlButton.setAttribute('slider-control',`${controlItem}`);
+            const controlButton = document.createElement('button');
+            controlButton.classList.add('poster-box', 'slider-item');
+            controlButton.setAttribute('slider-control', `${controlItem}`);
 
-        controlItem = controlItem + 1;
+            controlItem = controlItem + 1;
 
-        controlButton.innerHTML = `
+            controlButton.innerHTML = `
         <img src="${baseURL}w154${poster_path}" alt=${original_title} loading="lazy" draggable="false" class="cover-image">
         
         `
-        // console.log(object);
-     banner.querySelector('.control--inner').appendChild(controlButton);
-    //  console.log(banner);
+            // console.log(object);
+            banner.querySelector('.control--inner').appendChild(controlButton);
+            //  console.log(banner);
 
 
         }
-        contentContainer.appendChild(banner);
-        // console.log(contentContainer);
+        console.log(pageContent);
+        pageContent.appendChild(banner);
 
         addHeroSlide();
 
 
-        for(const { title,api_path } of homePageSections){
-            fetchData(`${api_path}?`, MovieListCreate,title)
+        for (const { title, api_path } of homePageSections) {
+            fetchData(`${api_path}?`, MovieListCreate, title)
         }
     }
-
-    const addHeroSlide = function(){
+    // console.log(movie_details);
+    // console.log(controlItem);
+    const addHeroSlide = function () {
         const sliderItem = document.querySelectorAll("[slider-item]");
         const sliderControls = document.querySelectorAll("[slider-control]");
 
         let previousSliderItem = sliderItem[0];
         let previousSliderControl = sliderControls[0];
-      
+
         sliderControls.forEach(ele => {
-            ele.addEventListener('click',function(e){
+            ele.addEventListener('click', function (e) {
                 previousSliderItem.classList.remove('active');
                 previousSliderControl.classList.remove('active');
 
-                previousSliderControl= sliderControls[Number(this.getAttribute(["slider-control"]))];
+                previousSliderControl = sliderControls[Number(this.getAttribute(["slider-control"]))];
                 previousSliderItem = sliderItem[Number(this.getAttribute(["slider-control"]))];
 
                 previousSliderItem.classList.add('active');
                 previousSliderControl.classList.add('active');
             })
         })
-          
 
 
-        }
+
+    }
 
 
-const MovieListCreate = function({results:movieList },title){
-    const movieListElement = document.createElement("section");
-    movieListElement.classList.add("movie-list");
-    movieListElement.innerHTML = `
+    const MovieListCreate = function ({ results: movieList }, title) {
+        const movieListElement = document.createElement("section");
+        movieListElement.classList.add("movie-list");
+        movieListElement.innerHTML = `
     
     <div class="title-wrap">
         <h2 class="title">${title}</h2>
@@ -147,26 +151,20 @@ const MovieListCreate = function({results:movieList },title){
     </div>
    `
 
-    for(const movie of movieList){
-        
-        const movieCard = createMovieCard(movie);
-        // console.log(movieCard);
-        movieListElement.querySelector('.slider-inner').appendChild(movieCard);
+        for (const movie of movieList) {
 
-        contentContainer.appendChild(movieListElement);
+            const movieCard = createMovieCard(movie);
+            // console.log(movieCard);
+            movieListElement.querySelector('.slider-inner').appendChild(movieCard);
+
+        }
+        pageContent.appendChild(movieListElement);
     }
-}
+
+// console.log(heroBannerCreate);
 
 
 
 
 
 
-
-
-
-
-
-
-
-fetchData(`https://api.themoviedb.org/3/movie/popular?`,heroBannerCreate);

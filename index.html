@@ -13,9 +13,7 @@
 
 <link rel="stylesheet" href="/assets/css/style.css">
 <script src="/assets/js/global.js" defer></script>
-<script type="module" src="/assets/js/index.js"></script>
-<script type="module" src="/assets/js/app.js"></script>
-<script type="module" src="/assets/js/sidebar.js"></script>
+<script type="module" src="/assets/js/index.js" defer></script>
 </head>
 <body>
     
@@ -49,15 +47,12 @@
 <!-- header finish -->
 
 <!-- sidebar start-->
-    <nav class="sidebar navbar">  </nav>
- <div class="overlay"></div>
-
-<!-- sidebar finsih -->
-
-<article class="container content-container" content>
-</article>
-
-
+<main>
+    <nav class="sidebar navbar" sidebar></nav>
+    <div class="overlay" overlay menu-toggler></div>
+    <article class="container" page-content></article>
+  </main>
 </body>
 </html>
+
 
