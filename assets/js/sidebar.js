@@ -6,10 +6,17 @@ export function sideBar(){
 const genreList = {}
 
 fetchData(`https://api.themoviedb.org/3/genre/movie/list?`,function({ genres }){
-for (const {id , name} of genres){
-    //the data from fetch is getting stored in genreList obj
-    genreList[id] = name;
-}
+// for (const {id , name} of genres){
+//     //the data from fetch is getting stored in genreList obj
+//     genreList[id] = name;
+    
+
+    for(let i = 0;i<genres.length;i++){
+        const id = genres[i].id;
+        const name = genres[i].name;
+        genreList[id] = name; 
+    }
+// }
 
 generateGenre();
 //generateGenre is called so that after the storing is completed, the result is shown onto to the UI.
@@ -74,6 +81,7 @@ const toggleSidebar = function(navbar){
             overlay.classList.toggle('active');
         })
     })
+
     
     sidebarClose.forEach(ele=>{
         ele.addEventListener('click',function(){
@@ -87,9 +95,3 @@ const toggleSidebar = function(navbar){
 
 
 
-// if(navbar.classList.contains('active')){
-//     // overlay.addEventListener('click',function(){
-//     //     navbar.classList.remove('active');
-//     console.log(`contains`);
-    
-// }
