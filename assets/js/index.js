@@ -10,17 +10,7 @@ import {searchCreation} from './search.js'
 const pageContent = document.querySelector("[page-content]");
 
 
-// const genreList = {
-//     //  create genre string from genre_id eg: [23, 43] "Action, Romance, "
-//     asString(genreIdList){
-//         newGenreList = [];
-//         for( const genreId of genreIdList){
-//             this[genreId] && newGenreList.push(this[genreId]);
-//             // this == genreList;
-//         }
-//         return newGenreList.join(", ")
-//     }
-// };
+
 
 
     sideBar();
@@ -76,7 +66,7 @@ const pageContent = document.querySelector("[page-content]");
 
             sliderItem.innerHTML = `
         <img src="${baseURL}w1280${backdrop_path}" alt=${original_title} class="cover-image" loading=${ind === 0 ? 'eager' : 'lazy'}>
-        
+
         <div class="item-content">
             <h2 class="heading">${original_title}</h2>
             <div class="other-info-list">
@@ -128,6 +118,8 @@ const pageContent = document.querySelector("[page-content]");
         let previousSliderItem = sliderItem[0];
         let previousSliderControl = sliderControls[0];
 
+        previousSliderItem.classList.add('active');
+        previousSliderControl.classList.add('active');
         sliderControls.forEach(ele => {
             ele.addEventListener('click', function (e) {
                 previousSliderItem.classList.remove('active');
