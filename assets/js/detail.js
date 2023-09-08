@@ -2,6 +2,7 @@
 import { fetchData,api_key,baseURL} from "./app.js";
 import { sideBar } from "./sidebar.js";
 import { createMovieCard } from "./movie-card.js";
+import {searchCreation} from './search.js'
 
 sideBar();
 
@@ -165,3 +166,4 @@ fetchData(`https://api.themoviedb.org/3/movie/${movieId}?${api_key}&append_to_re
     pageContent.appendChild(movieListElement);
 }
 
+searchCreation();

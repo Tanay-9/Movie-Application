@@ -9,6 +9,11 @@
     .then(data => callback(data,optionalParam));
  }
 
+ const fetchSpecData = function(url,callback,optionalParam){
+  fetch(`${url}`)
+  .then(response => response.json())
+  .then(data => callback(data,optionalParam));
+ }
   
   
  
@@ -16,4 +21,4 @@
 //    console.log(genres);
 //   });
   
-  export {fetchData,api_key,baseURL};
+  export {fetchData,api_key,baseURL,fetchSpecData};

@@ -4,6 +4,7 @@
 import { sideBar } from "./sidebar.js";
 import { fetchData, api_key, baseURL} from './app.js';
 import { createMovieCard } from './movie-card.js';
+import {searchCreation} from './search.js'
 
 
 const pageContent = document.querySelector("[page-content]");
@@ -160,7 +161,7 @@ console.log(pageContent);
         }
         pageContent.appendChild(movieListElement);
     }
-
+    searchCreation();
 // console.log(heroBannerCreate);
 
 
