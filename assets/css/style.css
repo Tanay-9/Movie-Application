@@ -436,17 +436,7 @@ z-index: 3;
   border-radius: var(--radius-24);
   overflow: hidden;
 }
-@media (min-width:575px){
-.item-content{
- right: auto;
- max-width: 500px;
-}
-.slider-controller{
-  left: calc(100%-400px);
-}
-.detail--content{
-  max-width: 750px;
-}}
+
 .slider .slider-item{
   position: absolute;
   top: 0;
@@ -854,4 +844,6 @@ display: block;
   z-index: 1;
   pointer-events: none;
 }
+
+
 

@@ -9,8 +9,18 @@ import {searchCreation} from './search.js'
 
 const pageContent = document.querySelector("[page-content]");
 
-console.log(pageContent);
 
+// const genreList = {
+//     //  create genre string from genre_id eg: [23, 43] "Action, Romance, "
+//     asString(genreIdList){
+//         newGenreList = [];
+//         for( const genreId of genreIdList){
+//             this[genreId] && newGenreList.push(this[genreId]);
+//             // this == genreList;
+//         }
+//         return newGenreList.join(", ")
+//     }
+// };
 
 
     sideBar();
@@ -65,13 +75,14 @@ console.log(pageContent);
             // console.log(original_title);
 
             sliderItem.innerHTML = `
-        <img src="${baseURL}w500${backdrop_path}" alt=${original_title} class="cover-image" loading=${ind === 0 ? 'eager' : 'lazy'}>
+        <img src="${baseURL}w1280${backdrop_path}" alt=${original_title} class="cover-image" loading=${ind === 0 ? 'eager' : 'lazy'}>
+        
         <div class="item-content">
             <h2 class="heading">${original_title}</h2>
             <div class="other-info-list">
                 <div class="other-item">${release_date.split('-')[0]}</div>
                 <div class="other-item rating">${vote_average.toFixed(1)}</div></div>
-                <p class="Genre">${genre_ids}</p>
+                <p class="Genre"></p>
                 <p class="about-banner">${overview}</p>
                 <a href="./detail.html" class="btn" onclick="getMovieDetails(${id})">
                         <img src="./assets/images/play_circle.png" class="play-icon" width="24" height="24">
@@ -109,8 +120,7 @@ console.log(pageContent);
             fetchData(`${api_path}?`, MovieListCreate, title)
         }
     }
-    // console.log(movie_details);
-    // console.log(controlItem);
+
     const addHeroSlide = function () {
         const sliderItem = document.querySelectorAll("[slider-item]");
         const sliderControls = document.querySelectorAll("[slider-control]");
@@ -162,7 +172,7 @@ console.log(pageContent);
         pageContent.appendChild(movieListElement);
     }
     searchCreation();
-// console.log(heroBannerCreate);
+
 
 
 
