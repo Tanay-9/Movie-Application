@@ -17,8 +17,5 @@
   
   
  
-//  fetchData(`https://api.themoviedb.org/3/genre/movie/list?`,function({ genres }){
-//    console.log(genres);
-//   });
-  
+
   export {fetchData,api_key,baseURL,fetchSpecData};

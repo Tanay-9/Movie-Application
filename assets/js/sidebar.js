@@ -70,16 +70,16 @@ const generateGenre = function(){
 const toggleSidebar = function(navbar){
     const sidebarBtn = document.querySelector('.menu-btn');
     const sideBarToggle = document.querySelectorAll('.menu-toggle')
-    // console.log(sideBarToggle);
+    
     const sidebarClose = document.querySelectorAll('[menu-close]');
     const overlay = document.querySelector('.overlay');
-    console.log(sideBarToggle);
+  
     sideBarToggle.forEach(ele=>{
         ele.addEventListener('click',function(){
             navbar.classList.toggle('active');
             sidebarBtn.classList.toggle('active');
             overlay.classList.toggle('active');
-            console.log(`working`);
+           
         })
     })
 

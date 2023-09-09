@@ -33,7 +33,7 @@ const pageContent = document.querySelector("[page-content]");
     ];
 
     function heroBannerCreate({ results: movieList }) {
-        // const banner = document.querySelector('.banner')
+    
         const banner = document.createElement('section');
         banner.classList.add('banner');
         banner.innerHTML = `
@@ -45,7 +45,7 @@ const pageContent = document.querySelector("[page-content]");
     </div>
 </div>
     `;
-        // console.log(movieList);
+        
         let controlItem = 0 //to sync the changes on the bigger banner and its preview
         for (const [ind, movie_details] of movieList.entries()) {
             const {
@@ -62,7 +62,7 @@ const pageContent = document.querySelector("[page-content]");
             const sliderItem = document.createElement('div');
             sliderItem.classList.add('slider-item');
             sliderItem.setAttribute('slider-item', '')
-            // console.log(original_title);
+            
 
             sliderItem.innerHTML = `
         <img src="${baseURL}w1280${backdrop_path}" alt=${original_title} class="cover-image" loading=${ind === 0 ? 'eager' : 'lazy'}>
@@ -82,7 +82,7 @@ const pageContent = document.querySelector("[page-content]");
         </div>
         `;
             banner.querySelector('.slider').appendChild(sliderItem);
-            // console.log(banner.innerHTML);
+            
 
             const controlButton = document.createElement('button');
             controlButton.classList.add('poster-box', 'slider-item');
@@ -92,15 +92,15 @@ const pageContent = document.querySelector("[page-content]");
 
             controlButton.innerHTML = `
         <img src="${baseURL}w154${poster_path}" alt=${original_title} loading="lazy" draggable="false" class="cover-image">
-        
+    
         `
-            // console.log(object);
+          
             banner.querySelector('.control--inner').appendChild(controlButton);
-            //  console.log(banner);
+          
 
 
         }
-        console.log(pageContent);
+       
         pageContent.appendChild(banner);
 
         addHeroSlide();
@@ -157,7 +157,7 @@ const pageContent = document.querySelector("[page-content]");
         for (const movie of movieList) {
 
             const movieCard = createMovieCard(movie);
-            // console.log(movieCard);
+           
             movieListElement.querySelector('.slider-inner').appendChild(movieCard);
 
         }

@@ -56,7 +56,7 @@ fetchData(`https://api.themoviedb.org/3/movie/${movieId}?${api_key}&append_to_re
    } = movie;
 
    document.title = `${title} - Moviezz;` 
-//    console.log(videos);
+
 
    const movieDetail = document.createElement('div');
    movieDetail.classList.add('movie-details');
@@ -134,7 +134,7 @@ fetchData(`https://api.themoviedb.org/3/movie/${movieId}?${api_key}&append_to_re
    fetchData(`https://api.themoviedb.org/3/movie/${movieId}/recommendations?`,getRecommendations)
 })
 
-//  const getRecommendations = function()
+
 
 
 
