@@ -24,14 +24,13 @@ export function searchCreation(){
         }
     
         searchWrap.classList.add('searching');
-        // console.log(searchWrap);
+
         clearTimeout(searchTimeout);
 
         searchTimeout = setTimeout(function(){
             fetchSpecData(`https://api.themoviedb.org/3/search/movie?${api_key}&query=${searchField.value}&include_adult=false&page=1`,function({results : movieList}){
             searchWrap.classList.remove('searching');
             results.classList.add('active');
-            console.log(`working?`);
             results.innerHTML = " ";
             results.innerHTML = `
             <p class="label">Results for</p>

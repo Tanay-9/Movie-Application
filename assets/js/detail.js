@@ -128,8 +128,6 @@ fetchData(`https://api.themoviedb.org/3/movie/${movieId}?${api_key}&append_to_re
     `;
 
     movieDetail.querySelector('.slider-inner').appendChild(videoCard);
-    // console.log(select);
-    // console.log(videoCard);
    }
 
    pageContent.appendChild(movieDetail);
@@ -159,7 +157,6 @@ fetchData(`https://api.themoviedb.org/3/movie/${movieId}?${api_key}&append_to_re
     for (const movie of movieList) {
 
         const movieCard = createMovieCard(movie);
-        // console.log(movieCard);
         movieListElement.querySelector('.slider-inner').appendChild(movieCard);
 
     }

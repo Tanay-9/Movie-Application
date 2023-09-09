@@ -10,7 +10,7 @@ import { searchCreation } from './search.js';
 const genreName = window.localStorage.getItem('genreName');
 const urlParam = window.localStorage.getItem('urlParam');
 const pageContent = document.querySelector('.content-container');
-// console.log(pageContent);
+
 
 sideBar();
 
